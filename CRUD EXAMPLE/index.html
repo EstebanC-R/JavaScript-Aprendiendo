@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+</head>
+<body>
+    <h1>Usuarios</h1>
+
+    <h3>Crear nuevo usuario</h3>
+    <input type="text" id="firstName" placeholder="Nombre">
+    <input type="text" id="lastName" placeholder="Apellido">
+    <input type="email" id="email" placeholder="Correo">
+    <button onclick="crearUsuario()">Guardar</button>
+
+    <h3>Eliminar usuario por ID</h3>
+    <input type="number" id="userId" placeholder="ID">
+    <button onclick="eliminarUsuario()">Eliminar</button>
+
+    <h3>Lista de usuarios</h3>
+    <button onclick="obtenerUsuarios()">Cargar usuarios</button>
+    <ul id="listaUsuarios">
+
+    </ul>
+
+    <script>
+        const apiUrl = 'http://localhost:8000/user';
+
+        function obtenerUsuarios() {
+        fetch(apiUrl)
+            .then(res => res.json())
+            .then(data => {
+                const lista = document.getElementById('listaUsuarios');
+                lista.innerHTML = '';
+                data.forEach(user => {
+                    const li = document.createElement('li');
+                    li.textContent = `${user.id}: ${user.firstName} ${user.lastName} (${user.email})`;
+                    lista.appendChild(li);
+                });
+            });
+        }
+
+        function crearUsuario() {
+        const firstName = document.getElementById('firstName').value;
+        const lastName = document.getElementById('lastName').value;
+        const email = document.getElementById('email').value;
+
+        fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ firstName, lastName, email })
+        })
+        .then(res => res.json())
+        .then(() => {
+            alert('Usuario creado!');
+            obtenerUsuarios();
+        });
+        }
+
+        function eliminarUsuario() {
+        const id = document.getElementById('userId').value;
+        fetch(`${apiUrl}/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.text())
+        .then(msg => {
+            alert(msg);
+            obtenerUsuarios();
+        });
+        }
+    </script>
+</body>
+</html>
