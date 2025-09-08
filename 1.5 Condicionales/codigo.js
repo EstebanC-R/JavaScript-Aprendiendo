@@ -77,3 +77,62 @@ if (nombre == "Milton" && apellido == "Castaño"){
         };
     };
 };
+
+/* ---------------------- */
+/* CONDCIONAL SWITCH CASE */
+/* ---------------------- */
+
+/*
+switch(VALOR){
+
+    case VALOR1:
+        //CODIGO A EJECUTAR
+        //break;
+
+    case VALOR2:
+        //CODIGO A EJECUTAR
+        //break;
+
+    case VALOR3:
+        //CODIGO A EJECUTAR
+        //break;
+
+    case VALOR4:
+        //CODIGO A EJECUTAR
+        //break;
+
+    default:
+        //CODIGO A EJECUTAR
+        //break;
+
+}
+*/
+
+let variableFruta = 'Mango'.toLowerCase()
+
+switch(variableFruta){
+
+    case 'mango':
+        console.log(`Precio: $100 el kg de ${variableFruta}`)
+        break;
+
+    case 'fresa':
+        console.log(`Precio: $200 el kg de ${variableFruta}`)
+        break;
+
+    case 'banano':
+        console.log(`Precio: $300 el kg de ${variableFruta}`)
+        break;
+
+    case 'mandarina':
+        console.log(`Precio: $400 el kg de ${variableFruta}`)
+        break;
+
+    case 'aguacate':
+        console.log(`Precio: $500 el kg de ${variableFruta}`)
+        break;
+
+    default:
+        console.log(`NO está dispobible ${variableFruta}`)
+        break;
+}

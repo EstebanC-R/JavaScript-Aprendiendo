@@ -3,7 +3,7 @@
 /* Si tuevieramos que llamar varias veces este codigo tendriamos que copiar una y 
 otra vez el codigo para hacerlo el numero de veces que nosotros queremos que se ejecute */
 
-respuesta = prompt("¡Hola Milton! ¿Como fue tu día?");
+let respuesta = prompt("¡Hola Milton! ¿Como fue tu día?");
 
 if (respuesta == "bien" || respuesta == "Bien") {
     alert("Me alegro");
@@ -167,3 +167,53 @@ const saludar3 = (nombre) => {
 }
 
 saludar3("Yane")
+
+
+/* ----------------------------------- */
+/*      FUNCIONES PURAS E IMPURAS      */
+/* ----------------------------------- */
+
+
+/* SIDE EFFECT O EFECTO SECUNDARIO:
+
+1. Modificamos variables globales
+2. Modificamos Paramétros
+3. Solicitudes HTTP
+4. Imprimir en Pantalla o Consola
+5. Manipulacion del DOM
+6. Obtener la hora actual
+
+*/
+
+function suma(a, b){
+    return a + b; // PURA
+}
+
+function suma(a, b){
+    console.log("Resultado: " ) // IMPURA
+    return a + b;
+}
+
+let total = 0;
+function sumaConEfecto(a){
+    total += a;     // IMPURA
+    return total
+}
+
+function elevarAlCuadrado(x){
+    return x * x;    // PURA
+}
+
+function añadirDiez(y){
+    return y + 10; // PURA
+}
+
+// COMBINACION DE DOS FUNCIONES PURAS
+
+const numberOne = 5;
+const finalResult = añadirDiez(elevarAlCuadrado(numberOne)); // PURA
+console.log(finalResult);
+
+
+
+
