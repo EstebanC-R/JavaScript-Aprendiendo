@@ -9,7 +9,7 @@ let frutas = ["Manzana", "Naranja", "Lima"];
 // Si copias una posicion de un array que no esta definida dentro del contenido del array
 // va a aparecer undefined devido a que el array no tiene esa posicion, las posiciones se empiezan desde 0.
 
-document.writeln(persona[0] + "<br>" + "<br>");
+//document.writeln(persona[0] + "<br>" + "<br>");
 
 /*------------------------------- ARRAY ASOCIATIVOS -----------------------------------*/
 
@@ -22,7 +22,7 @@ let pc1 = {
 
 pc2 = ["ÜsuarioPc", "Ryzen 5800", "24 GB", "512 GB"];
 
-document.writeln(pc1["ram"]+ "<br>"+ "<br>")
+//document.writeln(pc1["ram"]+ "<br>"+ "<br>")
 
 let nombre = pc1["nombre"];
 let procesador = pc1["procesador"];
@@ -34,7 +34,7 @@ let frase = `el nombre de mi PC es: <b>${nombre}</b> <br>
     la memoria es: <b>${ram}</b> <br>
     el espacio es de: <b>${espacio}</b> <br>`;
 
-document.writeln(frase);
+//document.writeln(frase);
 
 /*------------------------------------------- VERDADERA UTILIDAD EN EL MUNDO DE PROGRAMACIÓN ARRAY ------------------------------------------*/
 
@@ -107,14 +107,19 @@ console.log('ORIGINAL: ',listaDePaises)
 
 // ============================================  INMUTABILIDAD  ===============================================
 
-// Basicamente creo una copia del listaDePaises original, Colombia, Venezuela y ecuador y le agrego Alemania y Rusia, pero no lo modifico porque basicamente se creo una copia
-// con los datos agregados.
-const otrosPaises = listaDePaises.concat('Alemania', 'Rusia') // el concat es para concatenar y no modifica el array directamente como se hace con el push
+/* Basicamente creo una copia del listaDePaises original, 
+Colombia, Venezuela y ecuador y le agrego Alemania y Rusia, 
+pero no lo modifico porque basicamente se creo una copia con 
+los datos agregados.*/
+
+// el concat es para concatenar y no modifica el array directamente como se hace con el push
+const otrosPaises = listaDePaises.concat('Alemania', 'Rusia') 
 console.log('ORIGINAL:', listaDePaises) //NO CAMBIO EL ARRAY ORIGINAL.
 console.log('NUEVO:', otrosPaises) //CREA UN NUEVO ARRAY.
 
 //EJEMPLO:
-// RECORRE TODA LA LISTA Y AGREGA SEGUN EL DATO QUE RECORRA, OSEA QUE SI HAY UN 1 DESPUES DE 2 POSICIONES HAY UN 3, SIGNIFICA QUE SERIA 4 Y ASI HASTA QUE TERMINE DE
+// RECORRE TODA LA LISTA Y AGREGA SEGUN EL DATO QUE RECORRA, OSEA QUE SI HAY UN 1 
+// DESPUES DE 2 POSICIONES HAY UN 3, SIGNIFICA QUE SERIA 4 Y ASI HASTA QUE TERMINE DE
 // RECORRER TODA LA LISTA.
 console.log('----------------------------------')
 const numeroDel1al5 = [1, 2, 3, 4, 5]
