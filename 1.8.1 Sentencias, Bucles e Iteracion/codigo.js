@@ -107,7 +107,7 @@ for (animal in animales) {
 }
 
 
-/*-------------------- FOR-ON ---------------------*/
+/*-------------------- FOR-OF ---------------------*/
 /* 
     Devuelve el VALOR:  Devuelve el contenido, esta es 
     la diferencia entre ambos, mientras que en uno se especifica 

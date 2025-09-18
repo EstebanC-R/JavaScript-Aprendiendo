@@ -2,6 +2,7 @@
 atraves de la consola */
 
 const readline = require('readline');
+// al definirse globalmente se debe poner rl.close() a todo aunque no se pregunte
 
 /* --> Despues se crea la interfaz de lectura la cual se llama rl (readline)
 

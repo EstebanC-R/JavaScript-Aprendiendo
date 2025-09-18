@@ -56,7 +56,7 @@ console.log(listaDeUnNumero)
 
 console.log('-----------SEPARACIÓN-------------')
 
-// ============================ 2. SINTAXIS LITERAL [] =================================
+// ============================ 2. SINTAXIS LITERAL [], OBJETOS(PROPIEDADES) =================================
 
 // Aqui se muestra un unico valor, no va a mostrar más, ya que solo tiene el 1
 const arrayUnico = [1]
@@ -82,7 +82,7 @@ const arrayMixto = ['hola', 23, false, {
 console.log(arrayMixto)
 
 /* -------------------- */
-/* ARRAY: ACCESIBILIDAD */
+/* ARRAY: ACCESIBILIDAD, LENGTH Y POSICION */
 /* -------------------- */
 
 console.log('------------------SEPARACIÓN------------------')
@@ -99,13 +99,13 @@ console.log(Array.isArray(listaDeFrutas))
 /* ARRAY: MUTABILIDAD */
 /* ------------------ */
 
-// =============================================  MUTABILIDAD  =================================================
+// =============================================  MUTABILIDAD - PUSH  =================================================
 
 const listaDePaises = ['Colombia', 'Venezuela']
 const nuevosPaises = listaDePaises.push('Ecuador') // SE LE AGREGA Ecuador a lista de paises
 console.log('ORIGINAL: ',listaDePaises)
 
-// ============================================  INMUTABILIDAD  ===============================================
+// ============================================  INMUTABILIDAD - CONCAT  ===============================================
 
 /* Basicamente creo una copia del listaDePaises original, 
 Colombia, Venezuela y ecuador y le agrego Alemania y Rusia, 
