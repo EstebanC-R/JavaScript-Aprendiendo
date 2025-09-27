@@ -206,40 +206,57 @@ console.log(number)
 console.log(numerosPares)
 
 console.log('----------------------------------------')
-//REDUCE - INMUTABLE
-// Se usa para tomar todos los elementos de un array y combinarlos en un solo valor.
-// un numero (como una suma total), un string(como una frase concatenada), un objeto(como un resumen de datos), incluso otro array(como una version transformada).
+// REDUCE - INMUTABLE
+// El método .reduce() permite recorrer todos los elementos de un array y combinarlos en un único valor final.
+// Ese valor puede ser un número (como una suma total), un string (como una frase concatenada),
+// un objeto (como un resumen de propiedades), o incluso otro array (como una versión transformada).
 
-// basicamente se tiene la lista de numeros, despues se crea otra constante a recibir los datos para crear una nueva lista pero con la condicion del .reduce()
-// lo que se hace es definir variables temporales de esta forma tenermos a acumulador y valorActual, estos actuan de tal forma que en el acumulador es el que va
-// a llevar la cuenta, despues el valorActual el que va a iterar sobre la lista y ultimo el 0, el cual es el valor en que va a iniciar el acumulador,
-// de esta forma devuleve un unico elemento o valor, como se dijo puede ser numero, string, objeto, etc...
+// En este ejemplo, partimos de una lista de números. Luego usamos .reduce() para obtener la suma total.
+// El método recibe una función con dos parámetros: el 'acumulador' (que guarda el resultado parcial)
+// y el 'valorActual' (que representa el elemento que se está iterando en ese momento).
+// El segundo argumento de .reduce() (en este caso, 0) indica el valor inicial del acumulador.
+
+// En cada iteración, el acumulador se actualiza sumando el valorActual, y al final se devuelve un único número:
+// la suma total de todos los elementos del array.
+
 const numeroReduce = [1, 2, 3, 4, 5]
 const sumaReduce = numeroReduce.reduce((acumulador, valorActual) => acumulador + valorActual, 0)
 
-console.log(sumaReduce)
+console.log(sumaReduce) // Resultado: 15
 
-//EJEMPLO
 
-// Se usa .reduce() para recorrer un array de palabras y construir un objeto donde cada palabra es una clave, 
-// y su valor es cuántas veces aparece. En cada vuelta, si la palabra ya existe en el objeto (el acumulador), 
-// se le suma 1; si no existe, se agrega con valor 1. Así, el acumulador no suma directamente, sino que lleva un 
-// registro individual por palabra, como si fuera una tabla de conteo que se va llenando paso a paso. Al final, 
-// devuelve ese objeto con todas las palabras y sus repeticiones.
+
+// EJEMPLO - CONTADOR DE PALABRAS CON .reduce()
+
+// Usamos .reduce() para recorrer un array de palabras y construir un objeto que cuenta cuántas veces aparece cada una.
+// En cada iteración, el acumulador (que empieza como un objeto vacío) va guardando las palabras como claves.
+// Si la palabra ya existe en el acumulador, se le suma 1. Si no existe, se agrega con valor 1.
+// Es como ir llenando una tabla de conteo palabra por palabra, paso a paso.
+// Al final, .reduce() devuelve ese objeto con todas las palabras y sus repeticiones.
+
+
 
 const listaPalabras = ['parce', 'oe', 'oe', 'oe', 'oe', 'pues', 'oiga', 'oiga', 'oiga', 'parce']
 
 const palabrasRepetidas = listaPalabras.reduce((acumulador, valorActual) => {
-    if(acumulador[valorActual]){
+    if (acumulador[valorActual]) {
+        // Si ya existe una clave con el nombre de la palabra actual en el objeto acumulador,
+        // significa que esa palabra ya apareció antes. Entonces, simplemente le sumamos 1
+        // para aumentar su contador.
         acumulador[valorActual]++
-    }else{
+    } else {
+        // Si la palabra actual NO existe aún como clave en el acumulador,
+        // quiere decir que es la primera vez que aparece. Por eso, la agregamos
+        // al objeto con un valor inicial de 1.
         acumulador[valorActual] = 1
     }
+
     return acumulador
 },{})
 
-console.log(palabrasRepetidas)
-console.log(listaPalabras)
+console.log(palabrasRepetidas) // { parce: 2, oe: 4, pues: 1, oiga: 3 }
+console.log(listaPalabras)     // ['parce', 'oe', 'oe', 'oe', 'oe', 'pues', 'oiga', 'oiga', 'oiga', 'parce']
+
 
 /* ----------------------- */
 /* METODO FIND & FINDINDEX */
@@ -254,13 +271,17 @@ console.log('---------------------------------')
 // si no existe te devulve -1.
 
 // ninguno cumple la condicion.
-//METODO FIND - INMUTABLE
-const multiplosCinco = [5, 10, 1, 15, 20, 25, 30, 35, 40, 45, 50]
+
+// METODO FIND - INMUTABLE
+const multiplosCinco = [5, 10, 1, 15, 20, 25, 30, 35, 40, 45, 50, 100] 
 
 const primerNumeroMayorA35 = multiplosCinco.find(numero => numero > 100)
-console.log(primerNumeroMayorA35)
+// si le agregamos al array otro numero mayor a 100, por ejemplo 105, entonces si lo encuentra.
+console.log(primerNumeroMayorA35) // Resultado: undefined
 
 console.log('---------------------------------')
-//METODO FINDINDEX - INMUTABLE
-const indexNumber = multiplosCinco.findIndex(numero => numero % 2 !== 0 && numero > 100 )
-console.log(indexNumber)
+
+// METODO FINDINDEX - INMUTABLE
+const indexNumber = multiplosCinco.findIndex(numero => numero % 2 !== 0 && numero > 100)
+// si le agregamos al array otro numero mayor a 100 y encima que sea impar, por ejemplo 101, entonces si lo encuentra.
+console.log(indexNumber) // Resultado: -1

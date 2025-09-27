@@ -5,7 +5,7 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-/* rl.question("Cuantos numeros de la serie quiere ver?: ", (respuesta) => {
+rl.question("Cuantos numeros de la serie quiere ver?: ", (respuesta) => {
     let solucion = parseInt(respuesta);
     ArrayFibbonacci = [0, 1];
     for(let i = 2; i < solucion; i++){
@@ -14,7 +14,7 @@ const rl = readline.createInterface({
     console.log(ArrayFibbonacci);
     rl.close();
 });
- */
+
 
 // 1. Floristeria
 function menu(){
@@ -531,3 +531,388 @@ function sumarNumeroImpares2(){
 }
 // sumarNumeroImpares2();
 
+// 11. Para calcular el factorial de un número se deben multiplicar todos los números previos a él y el
+// mismo número, por ejemplo, el factorial de 6 es 1*2*3*4*5*6. Dado un número N calcular su
+// factorial.
+
+function calcularFactorial(){
+    rl.question("Ingresa el número al cual quieres saber su factorial: ", (numero) => {
+        let respuesta = parseInt(numero);
+        let total = 1;
+        for(let i = 1; i <= respuesta; i++){
+            total *= i;
+            console.log(`El número factorial de ${respuesta} es: `, total);
+        }
+        
+        rl.close();
+    });
+}
+// calcularFactorial()
+
+
+// 12. Generar e imprimir la serie y la suma los primero N números múltiplos de M. 
+
+function multiplos(){
+    rl.question("Por favor ingrese el número del cual quiera saber los multiplos: ", (numero) => {
+        let resultado = parseInt(numero);
+
+        rl.question(`Cuantos multiplos quiere saber del número ${resultado}?: `, (numero2) => {
+            let resultado2 = parseInt(numero2);
+            let lista = [];
+            for(let i = 1; i <= resultado2; i++){
+                lista.push(i)
+            }
+            console.log("Los primeros multiplos son los siguientes: ", lista);
+            let multiplosDeNumero = lista.map(x => x * resultado);
+            console.log("El resultado de esos multiplos es de: ", multiplosDeNumero);
+            let sumaMultiplos = multiplosDeNumero.reduce((acumulador, valor) => {
+                acumulador += valor;
+                return acumulador;
+            })
+            console.log("Por ultimo su suma es de: ", sumaMultiplos);
+            rl.close();
+        })
+    })
+}
+// multiplos();
+
+// Tambien se podría en cadena
+
+function multiplos2(){
+    rl.question("Por favor ingrese el número del cual quiera saber los multiplos: ", (numero) => {
+        let resultado = parseInt(numero);
+
+        rl.question(`Cuantos multiplos quiere saber del número ${resultado}?: `, (numero2) => {
+            let resultado2 = parseInt(numero2);
+
+            let lista = [];
+            for(let i = 1; i <= resultado2; i++){
+                lista.push(i)
+            }
+            let multiplosDeNumero = lista.map(x => x * resultado).reduce((acumulador, valor) => {acumulador += valor; 
+                return acumulador;
+            })
+
+            console.log("Por ultimo su suma es de: ", multiplosDeNumero);
+            rl.close();
+        })
+    })
+}
+// multiplos2();
+
+// 13. Calcular e imprimir la suma de S definida por la siguiente serie
+// S = 1 – 2 + 3 – 4 + 5 – 6 ... + n
+
+function sumaSerie(){
+    rl.question("Escoga el número de la seríe que quiera ver para aplicarle la formula: ", (numero)=>{
+        let respuesta = parseInt(numero);
+        let suma = 0;
+        let lista = [];
+        for(let i = 1; i <= respuesta; i++){
+            if(i % 2 !== 0){
+                suma += i;
+                if(i === 1){
+                    lista.push(`${i}`);
+                }else{
+                    lista.push(`+ ${i}`);
+                }
+            }else if(i % 2 === 0){
+                suma -= i;
+                lista.push(`- ${i}`);
+            }
+        }
+        console.log("La serie es: ", lista.join(" "), " y la suma es: ", suma);
+        rl.close();
+    })
+}
+// sumaSerie();
+
+// 14. Calcular e imprimir el valor de S definida por la siguiente serie
+// S = 1/1^2 + 1/3^2 + 1/5^2 + 1/7^2 + 1/N^2
+
+function serieS(){
+    rl.question("Dime el número para aplicarle la serie S: ", (numero)=> {
+        let resultadoNum = parseInt(numero);
+        let suma = 0;
+        let lista = [];
+        for(let i = 1; i <= resultadoNum; i++){
+            if(i % 2 !== 0){
+                suma += 1 / i ** 2;
+
+                if(i === 1){
+                    lista.push(`1/${i}^2`);
+                }else{
+                    lista.push(`+ 1/${i}^2`);
+                }
+            }   
+        }
+        console.log("La serie es: ", lista.join(" "), " y la suma es: ", suma);
+        rl.close();
+    })
+}
+// serieS();
+
+
+// 15. Calcular e imprimir la serie y el valor de S definida por:
+// S = 1 + 2 – 3 + 4 + 5 – 6 + 7 + 8 – 9 + … + N
+
+
+function serieS2(){
+    rl.question("Escribe el número que quieres aplicarle la serie S2: ", (numero)=>{
+        let resultado = parseInt(numero);
+        let suma = 0;
+        let lista = [];
+        for(let i = 1; i <= resultado; i++){
+            if(i % 3 == 0 ){
+                suma -= i;
+                lista.push(`- ${i}`);
+            }else{
+                suma += i;
+                if(i === 1){
+                    lista.push(`${i}`);
+                }else{
+                    lista.push(`+ ${i}`);
+                }
+            }
+        }
+        console.log("El resultado de la secuencia es: ", lista.join(" "), " y el resultado es: ", suma);
+        // .join() lo que hace es basicamente poner la lista en una sola cadena de texto, indicandole su separacion entre el parentesis (" "), su contrario sería split.
+        // el cual en vez de unirlo en uno solo lo que hace es separar por un indicador, por ejemplo (" ")
+        rl.close();
+    })
+}
+// serieS2();
+
+
+// 16. Calcular e imprimir la serie y el valor de S definida por:
+// S = 1 – 2 + 3 + 4 – 5 + 6 + 7 + 8 – 9 + 10 + 11 + 12 + 13 – 14 + … + N
+
+function secuenciaEnAumento(){
+    rl.question("Ingrese el número al cual le quiere aplicar la serie en aumento: ", (numero)=>{
+        let resultado = parseInt(numero);
+        let aumento = 0;
+        let restaIndice = 1;
+        let suma = 0;
+        let lista = [];
+        for(let i = 1; i <= resultado; i++){
+            aumento++;
+
+            if(aumento === restaIndice + 1){
+                suma -= i;
+                restaIndice++;
+                aumento = 0;
+                lista.push(`- ${i}`);
+            }else{
+                suma += i;
+                if(i === 1){
+                    lista.push(`${i}`);
+                }else{
+                    lista.push(`+ ${i}`);
+                }
+            }
+        }
+
+        console.log("La serie: ", lista.join(" "), " y la suma es: ", suma);
+        rl.close();
+    })
+}
+
+// secuenciaEnAumento();
+
+function test(){
+    rl.question("Pon el numero para hacerle la secuencia en aumento: ", (sum) => {
+        let resultado = parseInt(sum);
+        let contador = 0;
+        let aumento = 1;
+        let acumulador = 0;
+        let lista = [];
+
+        for(let i = 1; i <= resultado; i++){
+            contador++;
+            if(contador === aumento + 1){
+                acumulador -= i;
+                aumento++;
+                contador = 0;
+                lista.push(`- ${i}`);
+            }else{
+                acumulador += i;
+                if(i === 1){
+                    lista.push(`${i}`);
+                }else{
+                    lista.push(`+ ${i}`)
+                }
+            }
+        }
+        console.log("Serie: ", lista.join(" "), " Suma = ", acumulador);
+        rl.close();
+    })
+}
+//test();
+
+
+// 17. Mirar imagen de la seccion Images.
+// FORMA 1
+function alCuadrado(){
+    rl.question("Ingresa hasta el número impar que quieres saber la suma y en ultimas su cuadrado: ", (num) => {
+        let resultado = parseInt(num);
+        let suma = 0;
+        let serie = [];
+        for(let i = 0; i <= resultado; i++){
+            if(i % 2 !== 0){
+                suma += i;
+                if(i == 1){ 
+                    serie.push(`${i}`);
+                }else{
+                    serie.push(`+ ${i}`);
+                }
+                
+            }
+        }
+        let raiz = Math.sqrt(suma); // Raiz cuadrada
+        console.log(`La serie es: ${serie.join(" ")}, lo cual da una suma de ${suma} y su Raiz cuadrada es: ${raiz}^2`);
+        rl.close();
+    })
+}
+
+// alCuadrado();
+
+// FORMA 2
+function alCuadrado2(){
+    rl.question("Ingresa hasta el número impar que quieres saber la suma y en ultimas su cuadrado: ", (num) => {
+        let resultado = parseInt(num);
+        let suma = [];
+        let serie = [];
+        let i = 1;
+
+        // Para que entregue el número de impares que quiere.
+        while(suma.length < resultado){
+            if(i % 2 !== 0){
+                suma.push(i)
+                if(i == 1){
+                    serie.push(`${i}`);
+                }else{
+                    serie.push(` + ${i}`);
+                }
+            }
+            i++;
+        };
+
+        // Para mostrar la suma que hizo "1, 1 + 3, 1 + 3 + 4".
+        let sumaSerie = suma.map((x, i) => {
+            return suma.slice(0, i + 1).join(" + ");
+        });
+
+
+        // Para que entregue el resultado de cada suma con el indice anterior, 1 = 1, 1 + 3 = 4, 1+3+5 = 9....
+        let resultado2 = suma.map((x, i) => {
+            if(i == 0){
+                return x;
+            }else{
+                return suma.slice(0, i + 1).reduce((acumulador, x)=>acumulador + x, 0); 
+                // El slice es para incluir valores anteriores de una lista, con + 1 es los anteriores + el actual, si solo es 0, i, seria solo anteriores.
+            } 
+        });
+
+        for(let i = 0; i < sumaSerie.length; i++){
+            console.log(`La suma de la raíz es: ${sumaSerie[i]} y el resultado de la raíz es: ${Math.sqrt(resultado2[i])}^2`);
+        }
+        rl.close();
+    })
+}
+// alCuadrado2();
+
+
+// 18. Generar e imprimir las primeras N tablas de multiplicar, desde el 1 hasta el 9.
+
+function tablaDeMultiplicar(){
+    rl.question("Hasta cual tabla de multiplicar quieres ver?: ", (numero) => {
+        
+        let respuesta = parseInt(numero);
+        let tabla = [];
+        let i = 1;
+        if(respuesta < 1 || isNaN(respuesta)){
+            console.log("El número debe ser mayor a 0 y un número valido");
+            tablaDeMultiplicar();
+            return;
+        }else{
+            while(tabla.length < respuesta){
+                tabla.push(i);
+                i++;
+            }
+            tabla.forEach((x)=> {
+                let aum = 1;
+                console.log("-------//-------");
+                console.log("En la tabla del ", x);
+                console.log("--------//------");
+                while(aum <= 10){
+                    console.log(`${x} * ${aum} = `, x * aum);
+                    aum++;
+                }
+                console.log("--------------");
+            })
+            rl.close();
+        }
+    })
+}
+// tablaDeMultiplicar();
+
+// 19. Generar e imprimir la serie y la suma definida por:
+// S = 2/3 + 4/5 + 6/7 + 8/9 + …+(N*2)/(N*2 + 1)
+
+function serieDivisionYSuma(){
+    rl.question("Ingresa el valor S: ", (numero) => {
+        let respuesta = parseInt(numero);
+        let lista = [];
+        let iteracion = 1;
+        if(respuesta < 1 || isNaN(respuesta)){
+            console.log("Pon un número valido pedazo de animal");
+            serieDivisionYSuma();
+        }else{
+            while(lista.length < respuesta ){
+            
+                lista.push(iteracion)
+
+                let respuesta2 = lista.slice(0, iteracion + 1).reduce((acumulador, valor) => acumulador += (valor*2)/(valor*2 + 1) ,0)
+                console.log(`La serie es la ${iteracion}, la cual es: ${lista.map(x => (x*2) + "/" + (x*2 + 1)).join(" + ")} y su suma es = `, respuesta2);
+                iteracion++;
+            }
+            rl.close();
+        }
+    })
+}
+//serieDivisionYSuma();
+
+// 20. Genere e imprima los números y la sumatoria de la serie fibbonaci:
+// S = 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, …, N.
+
+function serieFibonacci() {
+    rl.question("Ingresa cuántos números quieres ver de la serie Fibonacci: ", (numero) => {
+        let respuesta = parseInt(numero);
+
+        if (isNaN(respuesta) || respuesta < 1) {
+            console.log("Por favor ingresa un número válido mayor que 0.");
+            serieFibonacci();
+        }
+
+        let lista = [];
+
+        for (let i = 0; i < respuesta; i++) {
+            if (i === 0) {
+                lista.push(0);
+            } else if (i === 1) {
+                lista.push(1);
+            } else {
+                lista.push(lista[i - 1] + lista[i - 2]);
+            }
+        }
+
+        let suma = lista.reduce((acum, val) => acum + val, 0);
+
+        console.log(`La serie Fibonacci con ${respuesta} términos es: ${lista.join(" + ")}`);
+        console.log(`La suma de la serie es: ${suma}`);
+
+        rl.close();
+    });
+}
+
+// serieFibonacci();
