@@ -220,13 +220,13 @@ let precios = [45, 23, 67, 12, 89];
 // Tu código aquí:
 
 let newPrecios = precios.reduce((acumulador, valor) => {
-    if(acumulador > valor){
+    if(acumulador < valor){
         return acumulador;
     }else{
         return valor;
     }
 
-}, 0)
+})
 
 console.log("EJERCICIO 22: ", newPrecios);
 
@@ -378,7 +378,8 @@ let newBiblioteca = biblioteca.reduce((acumulador, valor) =>  {
     return acumulador;
 }, {})
 
-console.log(newBiblioteca);
+console.log("EJERCICIO 33: ", newBiblioteca);
+console.log("---------------------------------------------------------");
 
 // Desafío 2: Estadísticas de biblioteca
 // Calcula:
@@ -386,14 +387,84 @@ console.log(newBiblioteca);
 // - Promedio de préstamos por libro
 // - Libro más popular (mayor préstamos)
 
+let totalPrestamos = biblioteca.reduce((acumulador, valor) => acumulador + valor.prestamos, 0);
+let promedioDeLibros = totalPrestamos / biblioteca.length;
+
+let tablaConElPodio = biblioteca.map(x => ({
+    Titulo: x.titulo,
+    Num_Prestamos: x.prestamos
+})).sort((a, b) => b.Num_Prestamos - a.Num_Prestamos).map((x, i) => ({
+    Posicion: i + 1,
+    ...x
+}));
+
+console.log("EJERCICIO 34: ");
+console.log("El total de prestamos de todos los libros es de: ", totalPrestamos);
+console.log("El promedio de prestamos de libros es de: ", promedioDeLibros);
+console.table(tablaConElPodio);
+console.log("---------------------------------------------------------");
+
 // Desafío 3: Libros disponibles por popularidad
 // Encuentra libros disponibles con más de 10 préstamos
 // Ordénalos por número de préstamos (descendente)
+
+let librosDisponibles = biblioteca.map(x => ({
+    Titulos: x.titulo,
+    Disponibilidad: x.disponible,
+    Prestamos: x.prestamos
+})).filter(x => x.Prestamos > 10).sort((a, b) => a.Prestamos - b.Prestamos);
+
+console.table(librosDisponibles);
 
 // Desafío 4: Buscador de libros
 // Crea una función que busque libros por:
 // - Título (búsqueda parcial, sin distinguir mayúsculas)
 // - Autor (búsqueda parcial)
 // - Género exacto
-
 // Tu código aquí para todos los desafíos:
+
+const readline = require('readline');
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+
+
+function busquedaParcial(){
+    rl.question("Porfavor dime el titulo de tu libro: ", (libro) => {
+        let resultado = biblioteca.filter(x => x.titulo.toLowerCase().includes(libro.toLowerCase()));
+
+        if(resultado.length === 0){
+            console.log("No tenemos ese libro disponible :(");
+            return rl.close();
+        }
+
+        rl.question("Entiendo, ahora dime el autor del libro: ", (aut) => {
+            resultado = resultado.filter(x => x.autor.toLowerCase().includes(aut.toLowerCase()));
+            
+
+            if(resultado === 0){
+                console.log("No encontramos el libro con este autor");
+                return rl.close();
+            }
+
+            rl.question("Por ultimo dime el género del libro: ", (genr) => {
+                resultado = resultado.filter(x => x.género.toLowerCase().replace("í", "i").replace("ó", "o") === genr.toLowerCase());
+                
+                if(resultado === 0){
+                    console.log("Disculpe, no encontramos tú libro, pronto lo tendremos en nuestra colección");
+                    return rl.close();
+                }else{
+                    console.log("Encontramos tú libro, aqui tienes: ");
+                    console.table(resultado);
+                }
+
+                rl.close();
+            
+            })
+        })
+    })
+}
+
+busquedaParcial();

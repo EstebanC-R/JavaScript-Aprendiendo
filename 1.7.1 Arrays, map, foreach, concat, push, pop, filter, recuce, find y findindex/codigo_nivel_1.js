@@ -591,7 +591,7 @@ function buscarProducto(){
                 );
 
                 if(productoEnMalaCategoria){
-                    console.log("Producto en mala categoria:", resultadosDeBusqueda, "es no es de:", resultadoCategoria);
+                    console.log("Producto en mala categoria:", resultadosDeBusqueda, "no es de:", resultadoCategoria);
                     buscarProducto();
                 }else{
                     if(resultadosDeBusqueda){
