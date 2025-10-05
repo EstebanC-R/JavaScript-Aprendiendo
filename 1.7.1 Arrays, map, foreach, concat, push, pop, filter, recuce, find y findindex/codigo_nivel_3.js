@@ -474,6 +474,9 @@ console.log("-------------------- Evaluación de Comprensión de Métodos de Arr
 // ¿Cuál es más eficiente para encontrar UN elemento?
 // a) filter()[0]  b) find()  c) Son iguales
 // Explica tu respuesta:
+// Si es solo para encontrar un elemento lo mejor sería usar la opcion b) ya que esta encuentra el primer elemento que cumpla la condición
+// mientras que filter muestra los elementos que cumplan una condición
+
 
 // Pregunta 2: Inmutabilidad
 let original = [1, 2, 3];
@@ -482,20 +485,24 @@ let resultado2 = original.concat(5);
 // ¿Qué contiene 'original' después de estas operaciones?
 // ¿Qué contienen resultado1 y resultado2?
 
+// el original contiene [1, 2, 3, 4] ya que concat es inmutable por lo que le agrego 5 pero sin modificar el original, mientras que push es mutable.
+// lo que quiere decir que resultado1 devuelve el valor que se pusheo y el resultado 2 devuelve [1, 2, 3, 4, 5]
+
+
 // Pregunta 3: Casos de uso
 // Para cada escenario, ¿qué método usarías?
-// A) Convertir temperaturas de Celsius a Fahrenheit: _____
-// B) Encontrar usuarios menores de edad: _____
-// C) Calcular el total de una factura: _____
-// D) Verificar si existe un producto con ID específico: _____
-// E) Combinar arrays de diferentes APIs: _____
+// A) Convertir temperaturas de Celsius a Fahrenheit: map();
+// B) Encontrar usuarios menores de edad: filter().
+// C) Calcular el total de una factura: reduce().
+// D) Verificar si existe un producto con ID específico: find()
+// E) Combinar arrays de diferentes APIs: concat().
 
 // Pregunta 4: Debugging
 // ¿Qué está mal en este código?
 let precios = [10, 20, 30];
 let total = precios.reduce((sum, precio) => sum + precio);
-// Problema: _____
-// Solución: _____
+// Problema: no se ha inicializado la variable temporal del acumulador.
+// Solución: sum + precio, 0);
 
 /* ===================================================================
     ------------------------ Descomente para probar ----------------
@@ -503,4 +510,4 @@ let total = precios.reduce((sum, precio) => sum + precio);
 
 //preguntarRecomendaciones(); // Este es del ejercicio 8 descomentalo si lo quieres probar
 //iniciarAnalisisFinanciero(); // Este es del ejercicio 11 descomentalo si lo quieres probar
-buscarPorTitulo();
+//buscarPorTitulo();
