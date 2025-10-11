@@ -1,0 +1,67 @@
+body{
+    background-color: whitesmoke;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1{
+    color: crimson;
+    text-align: center;
+    font-size: 32px;
+    text-shadow: 0 0 23px #379;
+}
+
+.texto{
+    padding: 30px;
+    justify-content: center;
+    text-align: center;
+    font-size: 28px;
+}
+
+.traditional{
+    margin: auto;
+    display: flex;
+    height: 200px;
+    width: 500px;
+    background-color: rgb(43, 43, 43);
+    color: white;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.traditional:hover{
+    filter: brightness(0.9);
+    background-color: gainsboro;
+    height: 230px;
+    width: 560px;
+    padding-top: -15px;
+    color: black;
+    font-size: 34px;
+    text-align: start;
+}
+
+.arrow{
+    margin: auto;
+    background-color: rgb(43, 43, 43);
+    display: flex;
+    height: 200px;
+    width: 500px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: white;
+}
+
+
+.arrow:hover{
+    filter: brightness(0.9);
+    background-color: gainsboro;
+    height: 230px;
+    width: 560px;
+    padding-top: -15px;
+    color: black;
+    font-size: 30px;
+    text-align: start;
+}

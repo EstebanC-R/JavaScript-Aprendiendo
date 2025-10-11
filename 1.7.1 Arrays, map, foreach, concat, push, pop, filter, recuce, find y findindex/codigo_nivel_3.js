@@ -505,7 +505,7 @@ let total = precios.reduce((sum, precio) => sum + precio);
 // Solución: sum + precio, 0);
 
 /* ===================================================================
-    ------------------------ Descomente para probar ----------------
+    ------------------------ Descomente para probar ---------------- 
 =================================================================== */
 
 //preguntarRecomendaciones(); // Este es del ejercicio 8 descomentalo si lo quieres probar
